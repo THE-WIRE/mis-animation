@@ -1,4 +1,6 @@
 import { Component, ViewEncapsulation, ElementRef, Renderer } from '@angular/core';
+import { Router } from '@angular/router'
+import { AngularFire } from 'angularfire2/index'
 
 @Component({
   selector: 'layout',
@@ -8,7 +10,13 @@ import { Component, ViewEncapsulation, ElementRef, Renderer } from '@angular/cor
 export class Layout {
   sidebarState: boolean = true;
 
-  constructor(private el: ElementRef, private renderer: Renderer) {}
+  constructor(private el: ElementRef, private renderer: Renderer, private af:AngularFire, public router:Router) {
+    this.af.auth.subscribe(user => {
+      if(!user){
+        this.router.navigate(['login'])
+      }
+    })
+  }
 
   sidebarPosition(position): void {
     let pos = position === 'Right' ? true : false;

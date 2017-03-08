@@ -1,4 +1,6 @@
 import {Component, Output, EventEmitter, Renderer, ElementRef} from '@angular/core';
+import { AngularFire } from 'angularfire2/index'
+import {Router} from "@angular/router";
 
 @Component({
   selector: '[navbar]',
@@ -13,7 +15,7 @@ export class Navbar {
   radioModel: string = 'Left';
   searchFormState: boolean = true;
 
-  constructor(private renderer: Renderer, private el: ElementRef) {}
+  constructor(private renderer: Renderer, private el: ElementRef, public af:AngularFire, private router:Router) {}
 
   sidebarPosition(position): void {
     this.changeSidebarPosition.emit(position);
@@ -40,5 +42,10 @@ export class Navbar {
 
   _changeStyleElement(selector, styleName, styleValue): void {
     this.renderer.setElementStyle(this.el.nativeElement.querySelector(selector), styleName, styleValue);
+  }
+
+  logout(){
+    this.af.auth.logout();
+    this.router.navigate(['login'])
   }
 }

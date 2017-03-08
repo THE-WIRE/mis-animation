@@ -26,8 +26,8 @@ const myFirebaseConfig = {
 };
 
 const myFirebaseAuthConfig = {
-  provider: AuthProviders.Google,
-  method: AuthMethods.Redirect
+  provider: AuthProviders.Password,
+  method: AuthMethods.Password
 };
 // Application wide providers
 const APP_PROVIDERS = [

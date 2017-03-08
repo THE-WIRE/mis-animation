@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import {AngularFire, FirebaseListObservable} from "angularfire2/index";
+import {AngularFire} from "angularfire2/index";
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'login',
@@ -11,26 +12,32 @@ import {AngularFire, FirebaseListObservable} from "angularfire2/index";
   }
 })
 export class Login {
-  items: FirebaseListObservable<any[]>;
-  constructor(public af: AngularFire) {
-    this.items = af.database.list('/products');
+
+  private email: string = ""
+  private password: string = ""
+
+  constructor(public af: AngularFire, private router:Router) {
+
+    this.af.auth.subscribe(user => {
+      console.log(user);
+      if(user){
+        this.router.navigate(['app'])
+      }
+    })
+
   }
 
-  login() {
-    this.af.auth.login({
-    });
+  login(formValues) {
+      this.af.auth.login({
+        email: formValues.email,
+        password: formValues.password
+      });
 
   }
 
   logout() {
     this.af.auth.logout();
   }
-
-  signOut() {
-    this.af.auth.logout();
-  }
-
-  //data= JSON.stringify(this.af.auth);
 
 
 }
