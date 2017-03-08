@@ -3,7 +3,14 @@
         <header class="text-align-center">
             <h4>Login to your account</h4>
         </header>
+
         <div class="body">
+            <div> {{ (af.auth | async)?.uid }} </div><hr />
+            <ul>
+                <li class="text" *ngFor="let item of items | async">
+                    {{item.price}}
+                </li>
+            </ul>
             <form class="no-margin" action="index.html" method="get">
                 <fieldset class="login-form">
                     <div class="form-group">
@@ -27,7 +34,7 @@
                     </div>
                 </fieldset>
                 <div class="form-actions">
-                    <button routerLink="/app/dashboard" type="submit" class="btn btn-block btn-danger">
+                    <button (click)="signOut()"  type="submit" class="btn btn-block btn-danger">
             <span class="small-circle"><i class="fa fa-caret-right"></i></span>
             <small>Sign In</small>
           </button>
@@ -37,7 +44,7 @@
         </div>
         <footer>
             <div class="facebook-login">
-                <a routerLink="/app/dashboard"><span><i class="fa fa-facebook-square fa-lg"></i> LogIn with Facebook</span></a>
+                <button (click)="login()"><span><i class="fa fa-facebook-square fa-lg"></i> LogIn with Facebook</span></button>
             </div>
         </footer>
     </section>

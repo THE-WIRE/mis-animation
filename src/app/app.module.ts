@@ -15,8 +15,20 @@ import { App } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InteralStateType } from './app.service';
 import { ErrorComponent } from './error/error.component';
+import {AngularFireModule, AuthProviders, AuthMethods} from "angularfire2/index";
 
+const myFirebaseConfig = {
+  apiKey: "AIzaSyDQlvp11pEJmE1qBZDO5ZiLFO4a5GlcXS8",
+  authDomain: "mis-animation.firebaseapp.com",
+  databaseURL: "https://mis-animation.firebaseio.com",
+  storageBucket: "mis-animation.appspot.com",
+  messagingSenderId: "644861865868"
+};
 
+const myFirebaseAuthConfig = {
+  provider: AuthProviders.Google,
+  method: AuthMethods.Redirect
+};
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -42,7 +54,8 @@ type StoreType = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true })
+    RouterModule.forRoot(ROUTES, { useHash: true }),
+    AngularFireModule.initializeApp(myFirebaseConfig, myFirebaseAuthConfig)
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
