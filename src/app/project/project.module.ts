@@ -14,7 +14,7 @@ import { ROUTES } from './project.routes';
     Project,
     ProjectEntry,
     AllProjects,
-    ProjectDetails
+    ProjectDetails,
   ],
   imports: [
     CommonModule,

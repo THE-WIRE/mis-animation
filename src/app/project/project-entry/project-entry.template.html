@@ -19,44 +19,42 @@
         </div>
       </header>
       <div class="body">
-        <form class="form-horizontal" role="form">
+        <form #projectEntry="ngForm" (ngSubmit)="submit(projectEntry.value)" class="form-horizontal" role="form">
           <fieldset>
-            <legend class="section">Project </legend>
+            <legend class="section">Create Project </legend>
             <div class="form-group">
-              <label for="normal-field1" class="col-sm-4 control-label">Project ID</label>
+              <label for="pid" class="col-sm-4 control-label">Project ID</label>
               <div class="col-sm-7">
-                <input type="text" id="normal-field1" class="form-control" placeholder="May have placeholder">
+                <input (ngModel)="pid" type="text" id="pid" name="pid" class="form-control" placeholder="Project Identifier">
               </div>
             </div>
 
             <div class="form-group">
-              <label for="normal-field2" class="col-sm-4 control-label">Project Name</label>
+              <label for="pname" class="col-sm-4 control-label">Project Name</label>
               <div class="col-sm-7">
-                <input type="text" id="normal-field2" class="form-control" placeholder="May have placeholder">
+                <input (ngModel)="pname" type="text" id="pname" name="pname" class="form-control" placeholder="Short Descriptive Name for Project">
               </div>
             </div>
 
             <div class="form-group col-md-7">
               <label >Project Type</label>
               <div class="input-group">
-                <select data-placeholder="Which galaxy is closest to Milky Way?"
+                <select (ngModel)="ptype" name="ptype" id="ptype" data-placeholder="Type of Project anim, movie, etc."
                         style="height: 10%;"
                         tabindex="-1"
                         class="select2 form-control" id="default-sel">
-                  <option value="Magellanic">Animation</option>
-                  <option value="Andromeda">Movie</option>
-                  <option value="Sextans">Sextans A</option>
+                  <option *ngFor="let option of projectTypes | async" value="{{option.key}}">{{ option.key }}</option>
                 </select>
                 <div class="input-group-btn " style="padding-left: 5% ">
-                  <button type="button" class="btn btn-primary">ADD </button>
+                  <button (click)="show()" type="button" class="btn btn-primary">ADD </button>
                 </div>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="normal-field" class="col-sm-4 control-label">Project Description</label>
+              <label for="pdesc" class="col-sm-4 control-label">Project Description</label>
               <div class="col-sm-7">
-                <textarea id="normal-field"></textarea>
+                <textarea (ngModel)="pdesc" class="form-control" id="pdesc" name="pdesc"></textarea>
               </div>
             </div>
 
@@ -72,50 +70,50 @@
     </section>
   </div>
 
-  <div class="col-md-6">
-    <section class="widget">
-      <h4>
-        <i class="fa fa-align-left"></i>
-        Inputs
-      </h4>
-      <header>
-        <div class="widget-controls">
-          <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
-          <a href="#"><i class="fa fa-refresh"></i></a>
-          <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
+<div [ngClass]="{'hide': isHidden, 'show': !isHidden}" class="col-md-6">
+  <section class="widget">
+    <h4>
+      <i class="fa fa-align-left"></i>
+      Inputs
+    </h4>
+    <header>
+      <div class="widget-controls">
+        <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
+        <a href="#"><i class="fa fa-refresh"></i></a>
+        <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
+      </div>
+    </header>
+    <div class="body">
+      <form #createptype="ngForm" (ngSubmit)="ptypesubmit(createptype.value)" role="form">
+        <fieldset>
+          <legend class="section">Add Project Type</legend>
+          <div class="row">
+            <div class="col-sm-7">
+              <div class="form-group">
+                <label for="ptypename">Project Type</label>
+                <div class="input-group">
+                  <input (ngModel)="ptypename" type="text" class="form-control" name="ptypename" id="ptypename">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="ptypeacr">Acronyms</label>
+                <div class="input-group">
+                  <input (ngModel)="ptypeacr" type="text" class="form-control" name="ptypeacr" id="ptypeacr">
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <div class="form-actions">
+          <div class="btn-toolbar">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <button (click)="hide()" type="button" class="btn btn-inverse">Cancel</button>
+          </div>
         </div>
-      </header>
-      <div class="body">
-        <form role="form">
-          <fieldset>
-            <legend class="section">Add Project Type</legend>
-            <div class="row">
-              <div class="col-sm-7">
-                <div class="form-group">
-                  <label for="bar">Project Type</label>
-                  <div class="input-group">
-                    <input type="text" class="form-control" id="acr">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="bar">Acronames</label>
-                  <div class="input-group">
-                    <input type="text" class="form-control" id="bar">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </fieldset>
-          <div class="form-actions">
-            <div class="btn-toolbar">
-              <button type="submit" class="btn btn-primary">Save Changes</button>
-              <button type="button" class="btn btn-inverse">Cancel</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </section>
-  </div>
+      </form>
+    </div>
+  </section>
+</div>
 </div>
 
 
