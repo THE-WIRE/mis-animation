@@ -21,137 +21,50 @@
       <div class="body">
         <form class="form-horizontal" role="form">
           <fieldset>
-            <legend class="section">Horizontal form</legend>
+            <legend class="section">Project </legend>
             <div class="form-group">
-              <label for="normal-field" class="col-sm-4 control-label">Normal field</label>
+              <label for="normal-field1" class="col-sm-4 control-label">Project ID</label>
               <div class="col-sm-7">
-                <input type="text" id="normal-field" class="form-control" placeholder="May have placeholder">
+                <input type="text" id="normal-field1" class="form-control" placeholder="May have placeholder">
               </div>
             </div>
+
             <div class="form-group">
+              <label for="normal-field2" class="col-sm-4 control-label">Project Name</label>
+              <div class="col-sm-7">
+                <input type="text" id="normal-field2" class="form-control" placeholder="May have placeholder">
+              </div>
+            </div>
 
-                <label class="col-sm-4 control-label" for="default-select">Default select</label>
-
-              <div class="col-sm-6 col-md-6">
-                <div class="btn-toolbar"></div>
+            <div class="form-group col-md-7">
+              <label >Project Type</label>
+              <div class="input-group">
                 <select data-placeholder="Which galaxy is closest to Milky Way?"
-                        data-width="auto"
-                        data-minimum-results-for-search="10"
+                        style="height: 10%;"
                         tabindex="-1"
-                        class="select2 form-control" id="default-select">
-                  <option value="Magellanic">Large Magellanic Cloud</option>
-                  <option value="Andromeda">Andromeda Galaxy</option>
+                        class="select2 form-control" id="default-sel">
+                  <option value="Magellanic">Animation</option>
+                  <option value="Andromeda">Movie</option>
                   <option value="Sextans">Sextans A</option>
                 </select>
-                <button type="button" class="btn btn-primary">ADD PROJECT TYPE</button>
+                <div class="input-group-btn " style="padding-left: 5% ">
+                  <button type="button" class="btn btn-primary">ADD </button>
+                </div>
               </div>
-              <div class="col-sm-2 col-md-2">
+            </div>
 
+            <div class="form-group">
+              <label for="normal-field" class="col-sm-4 control-label">Project Description</label>
+              <div class="col-sm-7">
+                <textarea id="normal-field"></textarea>
               </div>
-              <hr/>
+            </div>
 
-
-            </div>
-            <div class="form-group">
-              <label for="hint-field" class="col-sm-4 control-label">
-                Transparent input
-              </label>
-              <div class="col-sm-7">
-                <input type="text" id="transparent-field" class="form-control input-transparent" placeholder="Stylish, huh??">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="hint-field" class="col-sm-4 control-label">
-                Label hint
-                <span class="help-block">Some help text</span>
-              </label>
-              <div class="col-sm-7">
-                <input type="text" id="hint-field" class="form-control input-transparent">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label" for="tooltip-enabled">Tooltip enabled</label>
-              <div class="col-sm-7">
-                <input type="text" id="tooltip-enabled" class="form-control input-transparent"
-                       data-placement="top" data-original-title="Some explanation text here"
-                       placeholder="Hover over me..">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label" for="disabled-input">Disabled input</label>
-              <div class="col-sm-7">
-                <input type="text" id="disabled-input" class="form-control input-transparent"
-                       disabled="disabled" value="Default value" >
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label" for="max-length">Max length</label>
-              <div class="col-sm-7">
-                <input type="text" id="max-length" maxlength="3"
-                       class="form-control input-transparent"
-                       placeholder="Max length 3 characters"
-                       data-placement="top" data-original-title="You cannot write more than 3 characters.">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label" for="prepended-input">Prepended input</label>
-              <div class="col-sm-7">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                  <input id="prepended-input" class="form-control input-transparent" size="16" type="text" placeholder="Username">
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label" for="password-field">Password</label>
-              <div class="col-sm-7">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                  <input type="password" class="form-control input-transparent" id="password-field" placeholder="Password">
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label" for="appended-input">Appended input</label>
-              <div class="col-sm-7">
-                <div class="input-group">
-                  <input id="appended-input" class="form-control input-transparent" size="16" type="text">
-                  <span class="input-group-addon">.00</span>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label" for="combined-input">Combined</label>
-              <div class="col-sm-7">
-                <div class="input-group">
-                  <span class="input-group-addon">$</span>
-                  <input id="combined-input" class="form-control input-transparent" size="16" type="text">
-                  <span class="input-group-addon">.00</span>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-4 control-label" for="transparent-input">
-                Append Transparent
-              </label>
-              <div class="col-sm-7">
-                <div class="input-group">
-                  <input id="transparent-input" class="form-control input-transparent" type="text">
-                  <span class="input-group-addon">
-                                                <i class="fa fa-camera"></i>
-                                            </span>
-                </div>
-              </div>
-            </div>
           </fieldset>
           <div class="form-actions">
-            <div class="row">
-              <div class="col-sm-offset-4 col-sm-7">
-                <div class="btn-toolbar">
-                  <button type="submit" class="btn btn-primary">Save Changes</button>
-                  <button type="button" class="btn btn-inverse">Cancel</button>
-                </div>
-              </div>
+            <div class="btn-toolbar">
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+              <button type="button" class="btn btn-inverse">Cancel</button>
             </div>
           </div>
         </form>
@@ -159,5 +72,50 @@
     </section>
   </div>
 
+  <div class="col-md-6">
+    <section class="widget">
+      <h4>
+        <i class="fa fa-align-left"></i>
+        Inputs
+      </h4>
+      <header>
+        <div class="widget-controls">
+          <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
+          <a href="#"><i class="fa fa-refresh"></i></a>
+          <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+      </header>
+      <div class="body">
+        <form role="form">
+          <fieldset>
+            <legend class="section">Add Project Type</legend>
+            <div class="row">
+              <div class="col-sm-7">
+                <div class="form-group">
+                  <label for="bar">Project Type</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="acr">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="bar">Acronames</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="bar">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <div class="form-actions">
+            <div class="btn-toolbar">
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+              <button type="button" class="btn btn-inverse">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
 </div>
+
 
