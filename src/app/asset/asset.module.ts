@@ -2,17 +2,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
-import { Project } from './project.component';
-import { ProjectEntry } from './project-entry/project-entry.component';
-import { AllProjects } from './all-projects/all-projects.component';
+import { Project } from './asset.component';
+import { AssetEntry } from './asset-entry/asset-entry.component'
 
-import { ROUTES } from './project.routes';
+import { ROUTES } from './asset.routes';
 
 @NgModule({
   declarations: [
     Project,
-    ProjectEntry,
-    AllProjects
+    AssetEntry
   ],
   imports: [
     CommonModule,

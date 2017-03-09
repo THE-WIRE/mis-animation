@@ -6,7 +6,12 @@
     <a routerLink="another"><i class="fa fa-tree"></i> <span class="name">Another Page</span></a>
   </li>
   <li [routerLinkActive]="['active']">
-    <a routerLink="project"><i class="fa fa-pencil"></i> <span class="name">Project</span></a>
+    <a routerLink="project" class="accordion-toggle " data-toggle="collapse"
+       data-parent="#side-nav" href="#forms-collapse"><i class="fa fa-pencil"></i> <span class="name">Project</span></a>
+    <ul id="forms-collapse" class="panel-collapse collapse in">
+      <li [routerLinkActive]="['active']"><a routerLink="project/all"><span class="name">All Projects</span></a></li>
+      <li [routerLinkActive]="['active']"><a routerLink="project/entry"><span class="name">New Project</span></a></li>
+    </ul>
   </li>
 </ul>
 
