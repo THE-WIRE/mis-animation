@@ -5,7 +5,8 @@ const routes: Routes = [
   { path: '', component: Layout, children: [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: 'dashboard', loadChildren: () => System.import('../dashboard/dashboard.module') },
-    { path: 'another', loadChildren: () => System.import('../another/another.module') }
+    { path: 'another', loadChildren: () => System.import('../another/another.module') },
+    { path: 'project', loadChildren: () => System.import('../project/project.module') }
   ]}
 ];
 
