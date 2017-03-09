@@ -7,7 +7,7 @@ import { AllProjects } from "./all-projects/all-projects.component";
 const routes: Routes = [
 
   { path: '', component: Project, children: [
-    { path: '', redirectTo: 'entry', pathMatch: 'full' },
+    { path: '', redirectTo: 'all', pathMatch: 'full' },
     { path: 'entry', component: ProjectEntry, pathMatch: 'full' },
     { path: 'all', component: AllProjects, pathMatch: 'full'}
   ]},

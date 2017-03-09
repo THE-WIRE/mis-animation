@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { Project } from './project.component';
 import { ProjectEntry } from './project-entry/project-entry.component';
 import { AllProjects } from './all-projects/all-projects.component';
+import { ProjectDetails } from './project-details/project-details.component';
 
 import { ROUTES } from './project.routes';
 
@@ -12,7 +13,8 @@ import { ROUTES } from './project.routes';
   declarations: [
     Project,
     ProjectEntry,
-    AllProjects
+    AllProjects,
+    ProjectDetails
   ],
   imports: [
     CommonModule,
@@ -20,6 +22,6 @@ import { ROUTES } from './project.routes';
     ROUTES
   ]
 })
-export default class ProjectModule {
+export default class LoginModule {
 
 }
