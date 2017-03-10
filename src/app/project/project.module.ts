@@ -6,6 +6,7 @@ import { Project } from './project.component';
 import { ProjectEntry } from './project-entry/project-entry.component';
 import { AllProjects } from './all-projects/all-projects.component';
 import { ProjectDetails } from './project-details/project-details.component';
+import { TruncatePipe } from '../custom/pipes/truncate'
 
 import { ROUTES } from './project.routes';
 
@@ -14,7 +15,8 @@ import { ROUTES } from './project.routes';
     Project,
     ProjectEntry,
     AllProjects,
-    ProjectDetails,
+    TruncatePipe,
+    ProjectDetails
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,6 @@ import { ROUTES } from './project.routes';
     ROUTES
   ]
 })
-export default class LoginModule {
+export default class ProjectModule {
 
 }
