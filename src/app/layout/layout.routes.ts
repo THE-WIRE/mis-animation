@@ -6,7 +6,9 @@ const routes: Routes = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: 'dashboard', loadChildren: () => System.import('../dashboard/dashboard.module') },
     { path: 'another', loadChildren: () => System.import('../another/another.module') },
-    { path: 'project', loadChildren: () => System.import('../project/project.module') }
+    { path: 'project', loadChildren: () => System.import('../project/project.module') },
+    { path: 'asset', loadChildren: () => System.import('../asset/asset.module') },
+    { path: 'shot', loadChildren: () => System.import('../shot/shot.module') }
   ]}
 ];
 

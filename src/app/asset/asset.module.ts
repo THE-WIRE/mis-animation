@@ -2,15 +2,17 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
-import { Project } from './asset.component';
+import { Asset } from './asset.component';
 import { AssetEntry } from './asset-entry/asset-entry.component'
 
 import { ROUTES } from './asset.routes';
+import {AllAssets} from "./all-assets/all-assets.component";
 
 @NgModule({
   declarations: [
-    Project,
-    AssetEntry
+    Asset,
+    AssetEntry,
+    AllAssets
   ],
   imports: [
     CommonModule,
@@ -18,6 +20,6 @@ import { ROUTES } from './asset.routes';
     ROUTES
   ]
 })
-export default class ProjectModule {
+export default class AssetModule {
 
 }

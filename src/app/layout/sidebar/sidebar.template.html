@@ -8,9 +8,25 @@
   <li [routerLinkActive]="['active']">
     <a routerLink="project" class="accordion-toggle " data-toggle="collapse"
        data-parent="#side-nav" href="#forms-collapse"><i class="fa fa-pencil"></i> <span class="name">Project</span></a>
-    <ul id="forms-collapse" class="panel-collapse collapse in">
+    <ul id="project" class="panel-collapse collapse in">
       <li [routerLinkActive]="['active']"><a routerLink="project/all"><span class="name">All Projects</span></a></li>
       <li [routerLinkActive]="['active']"><a routerLink="project/entry"><span class="name">New Project</span></a></li>
+    </ul>
+  </li>
+  <li [routerLinkActive]="['active']">
+    <a routerLink="asset" class="accordion-toggle " data-toggle="collapse"
+       data-parent="#side-nav" href="#forms-collapse"><i class="fa fa-pencil"></i> <span class="name">Asset</span></a>
+    <ul id="asset" class="panel-collapse collapse in">
+      <li [routerLinkActive]="['active']"><a routerLink="asset/all"><span class="name">All Assets</span></a></li>
+      <li [routerLinkActive]="['active']"><a routerLink="asset/entry"><span class="name">New Asset</span></a></li>
+    </ul>
+  </li>
+  <li [routerLinkActive]="['active']">
+    <a routerLink="shot" class="accordion-toggle " data-toggle="collapse"
+       data-parent="#side-nav" href="#forms-collapse"><i class="fa fa-pencil"></i> <span class="name">Shot</span></a>
+    <ul id="shot" class="panel-collapse collapse in">
+      <li [routerLinkActive]="['active']"><a routerLink="shot/all"><span class="name">All Shots</span></a></li>
+      <li [routerLinkActive]="['active']"><a routerLink="shot/entry"><span class="name">New Shot</span></a></li>
     </ul>
   </li>
 </ul>
