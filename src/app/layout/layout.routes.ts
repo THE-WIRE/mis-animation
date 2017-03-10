@@ -8,7 +8,8 @@ const routes: Routes = [
     { path: 'another', loadChildren: () => System.import('../another/another.module') },
     { path: 'project', loadChildren: () => System.import('../project/project.module') },
     { path: 'asset', loadChildren: () => System.import('../asset/asset.module') },
-    { path: 'shot', loadChildren: () => System.import('../shot/shot.module') }
+    { path: 'shot', loadChildren: () => System.import('../shot/shot.module') },
+    { path: 'user', loadChildren: () => System.import('../user/user.module') }
   ]}
 ];
 

@@ -1,36 +1,22 @@
 
 
+<ul [ngClass]="{'hide': isHidden}" id="side-nav-spin" align="center" class="side-nav">
+  <span><i class="fa fa-circle-o-notch fa-spin"></i></span>
+</ul>
 
-<ul id="side-nav" class="side-nav">
-  <li [routerLinkActive]="['active']">
-    <a routerLink="dashboard"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
-  </li>
-  <li [routerLinkActive]="['active']">
-    <a routerLink="another"><i class="fa fa-tree"></i> <span class="name">Another Page</span></a>
-  </li>
-  <li [routerLinkActive]="['active']">
-    <a routerLink="project" class="accordion-toggle " data-toggle="collapse"
-       data-parent="#side-nav" href="#forms-collapse"><i class="fa fa-pencil"></i> <span class="name">Project</span></a>
-    <ul id="project" class="panel-collapse collapse in">
-      <li [routerLinkActive]="['active']"><a routerLink="project/all"><span class="name">All Projects</span></a></li>
-      <li [routerLinkActive]="['active']"><a routerLink="project/entry"><span class="name">New Project</span></a></li>
+<ul [ngClass]="{'show': isHidden}" id="side-nav" class="side-nav">
+
+  <li  *ngFor="let m of menu" [routerLinkActive]="['active']">
+    <a *ngIf="!!m?.child" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#side-nav" href="#{{m?.name | lowercase}}-collapse" aria-expanded="false" >
+      <i class="fa {{m?.icon}}"></i> <span class="name">{{m?.name}}</span></a>
+    <a *ngIf="!m?.child" data-parent="#side-nav" href="#" routerLink="{{m?.url}}">
+      <i class="fa {{m?.icon}}"></i> <span class="name">{{m?.name}}</span>
+    </a>
+
+    <ul *ngIf="!!m?.child" id="{{m?.name | lowercase}}-collapse" class="panel-collapse collapse">
+      <li *ngFor="let n of m?.child" [routerLinkActive]="['active']"><a routerLink="{{n.url}}"><span class="name">{{n?.name}}</span></a></li>
     </ul>
-  </li>
-  <li [routerLinkActive]="['active']">
-    <a routerLink="asset" class="accordion-toggle " data-toggle="collapse"
-       data-parent="#side-nav" href="#forms-collapse"><i class="fa fa-pencil"></i> <span class="name">Asset</span></a>
-    <ul id="asset" class="panel-collapse collapse in">
-      <li [routerLinkActive]="['active']"><a routerLink="asset/all"><span class="name">All Assets</span></a></li>
-      <li [routerLinkActive]="['active']"><a routerLink="asset/entry"><span class="name">New Asset</span></a></li>
-    </ul>
-  </li>
-  <li [routerLinkActive]="['active']">
-    <a routerLink="shot" class="accordion-toggle " data-toggle="collapse"
-       data-parent="#side-nav" href="#forms-collapse"><i class="fa fa-pencil"></i> <span class="name">Shot</span></a>
-    <ul id="shot" class="panel-collapse collapse in">
-      <li [routerLinkActive]="['active']"><a routerLink="shot/all"><span class="name">All Shots</span></a></li>
-      <li [routerLinkActive]="['active']"><a routerLink="shot/entry"><span class="name">New Shot</span></a></li>
-    </ul>
+
   </li>
 </ul>
 

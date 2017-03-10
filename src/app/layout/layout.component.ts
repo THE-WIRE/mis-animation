@@ -8,8 +8,8 @@ import { AngularFire } from 'angularfire2/index'
   templateUrl: './layout.template.html'
 })
 export class Layout {
-  sidebarState: boolean = true;
 
+  sidebarState: boolean = true;
   constructor(private el: ElementRef, private renderer: Renderer, private af:AngularFire, public router:Router) {
     this.af.auth.subscribe(user => {
       if(!user){
