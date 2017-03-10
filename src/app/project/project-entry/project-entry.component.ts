@@ -66,6 +66,7 @@ export class ProjectEntry{
     acro.push({"name" : this.Tname,"acr" : this.Tacr}).then(_ => {
       this.Tname = null;
       this.Tacr = null;
+      this.hide();
       console.log('success')
     })
         .catch(err => console.log(err, 'You do not have access!'));
