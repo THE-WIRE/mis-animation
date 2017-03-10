@@ -43,7 +43,7 @@
                         style="height: 10%;"
                         tabindex="-1"
                         class="select2 form-control" id="default-sel">
-                  <option *ngFor="let option of projectTypes | async" value="{{option.key}}">{{ option.key }}</option>
+                  <option *ngFor="let option of projectTypes | async" value="{{option.val().name}}">{{ option.val().name }}</option>
                 </select>
                 <div class="input-group-btn " style="padding-left: 5% ">
                   <button (click)="show()" type="button" class="btn btn-primary">ADD </button>
@@ -84,7 +84,7 @@
       </div>
     </header>
     <div class="body">
-      <form #createptype="ngForm" (ngSubmit)="ptypesubmit(createptype.value)" role="form">
+      <form #createptype="ngForm" (ngSubmit)="ptypesubmit()" role="form">
         <fieldset>
           <legend class="section">Add Project Type</legend>
           <div class="row">
@@ -92,13 +92,13 @@
               <div class="form-group">
                 <label for="ptypename">Project Type</label>
                 <div class="input-group">
-                  <input (ngModel)="ptypename" type="text" class="form-control" name="ptypename" id="ptypename">
+                  <input (ngModel)="ptypename" [(ngModel)]= "Tname" type="text" class="form-control" name="ptypename" id="ptypename">
                 </div>
               </div>
               <div class="form-group">
                 <label for="ptypeacr">Acronyms</label>
                 <div class="input-group">
-                  <input (ngModel)="ptypeacr" type="text" class="form-control" name="ptypeacr" id="ptypeacr">
+                  <input (ngModel)="ptypeacr" [(ngModel)]= "Tacr" type="text" class="form-control" name="ptypeacr" id="ptypeacr">
                 </div>
               </div>
             </div>

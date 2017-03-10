@@ -1,1 +1,9 @@
-<project-details></project-details>
+<div class="content container">
+    <div class="row">
+           <div class="widget">
+               <li *ngFor="let project of parr | async">
+                   {{ project.val().pname | json}}
+               </li>
+           </div>
+    </div>
+</div>
