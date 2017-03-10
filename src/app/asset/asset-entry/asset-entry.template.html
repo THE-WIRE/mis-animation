@@ -1,9 +1,8 @@
 <div class="content container">
-  <h2 class="page-title">Tables - <span class="fw-semi-bold">Dynamic</span></h2>
+  <h2 class="page-title">Tables - <span class="fw-semi-bold"> Excel - Format</span></h2>
 
   <section class="widget">
     <header>
-      <h4>Table <span class="fw-semi-bold">Styles</span></h4>
       <div class="widget-controls">
         <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
         <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
@@ -12,8 +11,7 @@
     </header>
     <div class="body">
       <p>
-        Column sorting, live search, pagination. Built with
-        <a href="http://www.datatables.net/" target="_blank">jQuery DataTables</a>
+        Template for Asset Entry
       </p>
       <div class="mt">
         <table id="datatable-table" class="table table-striped table-hover">
@@ -43,39 +41,25 @@
               </small>
             </td>
             <td>
-              <div class="col-md-2">
-                  <input type="text"  class="form-control">
-              </div>
+
             </td>
             <td>
-              <div class="col-md-2">
-                <input type="text" class="form-control">
-              </div>
+
             </td>
             <td>
-              <div class="col-md-2">
-                <input type="text" class="form-control">
-              </div>
+
             </td>
             <td>
-              <div class="col-md-2">
-                <input type="text" class="form-control">
-              </div>
+
             </td>
             <td>
-              <div class="col-md-2">
-                <input type="text" class="form-control">
-              </div>
+
             </td>
             <td>
-              <div class="col-md-2">
-                <input type="text" class="form-control">
-              </div>
+
             </td>
             <td>
-              <div class="col-md-2">
-                <input type="text" class="form-control" required>
-              </div>
+
             </td>
             <td>
               <div class="btn-toolbar">
@@ -87,6 +71,97 @@
 
           </tbody>
         </table>
+
+
       </div>
     </div>
   </section>
+</div>
+
+
+<div class="content container">
+  <h2 class="page-title">Components -  <span class="fw-semi-bold">Fileupload</span> <small>Drag & drop fileupload</small></h2>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-1">
+      <section class="widget">
+        <div class="body">
+          <form id="fileupload" action="server/php" method="POST" enctype="multipart/form-data">
+            <div class="row">
+              <div class="col-md-12">
+                <div id="dropzone"  class="dropzone">
+                  Drop files here
+                  <i class="fa fa-download-alt pull-right"></i>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 fileupload-progress fade">
+                <!-- The global progress bar -->
+                <div class="progress progress-xs active" role="progressbar" id ="uploader" aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar progress-bar-inverse" style="width:0%;"></div>
+                </div>
+                <!-- The extended global progress state -->
+                <div class="progress-extended">&nbsp;</div>
+              </div>
+            </div>
+            <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+            <div class="form-actions fileupload-buttonbar no-margin">
+              <!-- The fileinput-button span is used to style the file input field as button -->
+              <span class="btn btn-default fileinput-button mr-xs">
+                                        <i class="glyphicon glyphicon-plus"></i>
+                                        <span>Add files...</span>
+                                        <input type="file" name="files[]"  multiple>
+                                    </span>
+              <button type="button" class="btn btn-primary start mr-xs" id="fbutton">
+                <i class="glyphicon glyphicon-upload"></i>
+                <span>Start upload</span>
+              </button>
+              <button type="reset" class="btn btn-inverse cancel">
+                <i class="glyphicon glyphicon-ban-circle"></i>
+                <span>Cancel upload</span>
+              </button>
+            </div>
+            <!-- The table listing the files available for upload/download -->
+            <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<script  src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js">
+ var myFirebaseConfig = {
+   apiKey: "AIzaSyDQlvp11pEJmE1qBZDO5ZiLFO4a5GlcXS8",
+   authDomain: "mis-animation.firebaseapp.com",
+   databaseURL: "https://mis-animation.firebaseio.com",
+   storageBucket: "mis-animation.appspot.com",
+   messagingSenderId: "644861865868"
+ };
+ firebase.initializeApp(myFirebaseConfig);
+</script>
+<script>
+
+  var uploader = document.getElementById('uploader');
+  var fbutton = document.getElementById('fbutton');
+
+  fbutton.addEventListener('change',
+    function(e){
+      var file = e.target.files[0];
+      var storageref = firebase.storage().ref('assets/' +file.name);
+      var task = storageref.put(file);
+      task.on('state_changed',
+        function progress(csv) {
+          var percentage = ( csv.bytesTransferred / csv.totalBytes ) * 100;
+          uploader.value = percentage;
+        },
+        function error(err) {
+          console.log(err);
+        },
+        function complete() {
+          console.log('Done')
+        })
+
+    })
+
+
+</script>
