@@ -1,1 +1,107 @@
 
+<div class="row">
+  <div class="col-md-12">
+    <section class="widget">
+      <header>
+        <h4>
+          Table <span class="fw-semi-bold">Styles</span>
+        </h4>
+        <div class="widget-controls">
+          <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
+          <a data-widgster="close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+      </header>
+      <div class="body">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th class="hidden-xs">#</th>
+            <th>Asset Image</th>
+            <th>Asset Code</th>
+            <th class="hidden-xs">Info</th>
+            <th class="hidden-xs">Start Date</th>
+            <th class="hidden-xs">Status</th>
+            <th class="hidden-xs">Options</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr align="center" [ngClass]="{'hide': isLoaded}">
+            <td colspan="100%"><i class="fa fa-circle-o-notch fa-spin"></i></td>
+          </tr>
+          <ng-container *ngFor="let assetx of assets">
+
+
+          <tr *ngFor="let asset of assetx">
+
+              <td class="hidden-xs">1</td>
+              <td>
+                <img class="img-rounded" [src]="asset?.image" *ngIf="!!asset?.image" alt="No image" height="50">
+                <span *ngIf="!asset?.image" class="text-muted">No Image</span>
+              </td>
+              <td>
+                {{ asset?.info?.asset_code }}
+              </td>
+              <td class="hidden-xs">
+                <p class="no-margin">
+                  <small>
+                    <span class="fw-semi-bold">Type:</span>
+                    <span class="text-muted">&nbsp; {{ asset?.info?.asset_type }}</span>
+                  </small>
+                </p>
+                <p>
+                  <small>
+                    <span class="fw-semi-bold">Created:</span>
+                    <span class="text-muted">&nbsp; {{ asset?.date?.cr_date | date:long }}</span>
+                  </small>
+                </p>
+              </td>
+              <td class="hidden-xs text-muted">
+                <span *ngIf="!!asset?.date?.st_date" >{{ asset?.date?.st_date }}</span>
+                <span *ngIf="!asset?.date?.st_date" >Not Started</span>
+              </td>
+              <td class="hidden-xs text-muted">
+                {{ asset?.status }}
+              </td>
+              <td class="hidden-xs text-muted">
+
+                <button class="btn btn-success btn-sm">Work</button>
+                <button class="btn btn-warning btn-sm">In Progress</button>
+                <button class="btn btn-danger btn-sm">Stop</button>
+              </td>
+              <td class="width-150">
+                <button class="btn btn-primary btn-sm">Details</button>
+              </td>
+
+
+          </tr>
+
+          </ng-container>
+
+          </tbody>
+        </table>
+        <div class="clearfix">
+          <div class="pull-right">
+            <button class="btn btn-default btn-sm">
+              Send to ...
+            </button>
+            <div class="btn-group">
+              <button class="btn btn-sm btn-inverse dropdown-toggle" data-toggle="dropdown">
+                &nbsp; Clear &nbsp;
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li><a href="#">Clear</a></li>
+                <li><a href="#">Move ...</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div>
+          </div>
+          <p>Basic table with styled content</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

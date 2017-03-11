@@ -11,6 +11,8 @@ export class Navbar {
   @Output() changeSidebarDisplay = new EventEmitter();
   @Output() openSidebar = new EventEmitter();
 
+  public userDisplayName:string
+
   display: string = 'Left';
   radioModel: string = 'Left';
   searchFormState: boolean = true;
@@ -42,6 +44,14 @@ export class Navbar {
 
   _changeStyleElement(selector, styleName, styleValue): void {
     this.renderer.setElementStyle(this.el.nativeElement.querySelector(selector), styleName, styleValue);
+  }
+
+  ngOnInit(){
+    this.af.auth.subscribe(user => {
+      this.af.database.object('Users/'+user.uid+'/info').subscribe(data => {
+        this.userDisplayName = data.lname + ' ' + data.fname;
+      })
+    })
   }
 
   logout(){

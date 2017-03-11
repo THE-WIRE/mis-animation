@@ -39,7 +39,7 @@ export class Sidebar {
 
   ngOnInit(){
     this.af.auth.subscribe(user => {
-      this.af.database.object('Users/'+user.uid).subscribe(data => {
+      this.af.database.object('Users/'+user.uid+'/info').subscribe(data => {
         this.getMenu(data.role)
       })
     })
