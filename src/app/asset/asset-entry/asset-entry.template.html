@@ -85,7 +85,7 @@
     <div class="col-md-8 col-md-offset-1">
       <section class="widget">
         <div class="body">
-          <form id="fileupload" action="server/php" method="POST" enctype="multipart/form-data">
+          <form id="fileupload"  enctype="multipart/form-data">
             <div class="row">
               <div class="col-md-12">
                 <div id="dropzone"  class="dropzone">
@@ -110,9 +110,9 @@
               <span class="btn btn-default fileinput-button mr-xs">
                                         <i class="glyphicon glyphicon-plus"></i>
                                         <span>Add files...</span>
-                                        <input type="file" name="files[]"  multiple>
+                                        <input type="file" name="files[]" id="file"  multiple>
                                     </span>
-              <button type="button" class="btn btn-primary start mr-xs" id="fbutton">
+              <button (click)="upload()" type="button" class="btn btn-primary start mr-xs">
                 <i class="glyphicon glyphicon-upload"></i>
                 <span>Start upload</span>
               </button>
@@ -129,6 +129,11 @@
     </div>
   </div>
 </div>
+
+
+
+
+<!--
 <script  src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js">
  var myFirebaseConfig = {
    apiKey: "AIzaSyDQlvp11pEJmE1qBZDO5ZiLFO4a5GlcXS8",
@@ -165,3 +170,4 @@
 
 
 </script>
+-->
