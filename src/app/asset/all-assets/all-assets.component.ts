@@ -8,35 +8,50 @@ import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from "ang
   `]
 })
 export class AllAssets{
-  private isLoaded:boolean = false
-  public assets:any[] = [];
+  private isLoaded:boolean = true
+  private projectMenu:any[]
+  public assets:any
 
-  constructor(private af:AngularFire){
+  constructor(private af:AngularFire, private af2:AngularFire){
 
     this.af.auth.subscribe(user => {
       this.af.database.list('Users/' + user.uid + '/projects').subscribe(projects => {
-        this.assets = [];
+
+        this.projectMenu = [];
+        let length = projects.length;
         projects.forEach(project => {
           if(project.status == 1){
-            console.log(project.$key);
-            this.af.database.list('projects/' + project.$key + '/Assets/').subscribe(assets => {
-              this.assets.push(assets);
-              console.log(assets)
-              this.isLoaded = true;
+            this.af.database.object('projects/' + project.$key + '/long').subscribe(info => {
 
+              console.log(info);
+              let data  = { "info" : info, "key": project.$key};
+              this.projectMenu.push(data);
+
+              if(this.projectMenu.length > length){
+                this.projectMenu = []
+                this.projectMenu.push(data)
+              }
             })
           }
         })
-      });
+      })
     })
   }
 
-  ngOnInit(){
-      this.loadAssets()
-  }
+  getAssets(formValue){
+console.log(formValue);
 
-  loadAssets(){
+    this.isLoaded = false
 
+    this.af.database.list('projects/' + formValue.projectKey + '/Assets/').subscribe(assets => {
+
+        this.assets = assets;
+        this.isLoaded = true;
+      },
+      error => {
+        console.log(error);
+        console.log('Something happened3!');
+      })
   }
 
 

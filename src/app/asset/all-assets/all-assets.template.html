@@ -12,6 +12,23 @@
         </div>
       </header>
       <div class="body">
+        <div align="center">
+          <form #selectProject="ngForm" (ngSubmit)="getAssets(selectProject.value)">
+            <div class="form-group col-md-8 col-md-offset-2">
+              <div class="form-group col-md-4">
+                <label class="label-control" for="project-select">Select Project :</label>
+              </div>
+              <div class="form-group col-md-4">
+                <select class="form-control" (ngModel)="projectKey" name="projectKey" id="project-select">
+                  <option *ngFor="let p of projectMenu" value="{{ p.key }}">{{ p.info.name }}</option>
+                </select>
+              </div>
+              <div class="form-group col-md-4">
+                <button id="submit" type="submit" class="btn btn-primary form-control">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
         <table class="table table-striped">
           <thead>
           <tr>
@@ -29,10 +46,8 @@
           <tr align="center" [ngClass]="{'hide': isLoaded}">
             <td colspan="100%"><i class="fa fa-circle-o-notch fa-spin"></i></td>
           </tr>
-          <ng-container *ngFor="let assetx of assets">
 
-
-          <tr *ngFor="let asset of assetx">
+          <tr *ngFor="let asset of assets">
 
               <td class="hidden-xs">1</td>
               <td>
@@ -65,9 +80,9 @@
               </td>
               <td class="hidden-xs text-muted">
 
-                <button class="btn btn-success btn-sm">Work</button>
-                <button class="btn btn-warning btn-sm">In Progress</button>
-                <button class="btn btn-danger btn-sm">Stop</button>
+                <ng-container *ngIf="asset?.status == 0"><button class="btn btn-success btn-sm">Work</button></ng-container>
+                <ng-container *ngIf="asset?.status == 1"><button class="btn btn-warning btn-sm">In Progress</button></ng-container>
+                <ng-container *ngIf="asset?.status == 2"><button class="btn btn-danger btn-sm">Stop</button></ng-container>
               </td>
               <td class="width-150">
                 <button class="btn btn-primary btn-sm">Details</button>
@@ -75,8 +90,6 @@
 
 
           </tr>
-
-          </ng-container>
 
           </tbody>
         </table>
