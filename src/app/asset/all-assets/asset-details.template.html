@@ -1,0 +1,15 @@
+<div>
+
+    <h3> {{asset?.info?.asset_code}} </h3>
+    <div>
+        <div *ngFor="let note of asset?.notes" class="well">
+            <span class="col-md-12">
+                {{note.cr_by | getUser}} | {{note.cr_date | date}}
+            </span>
+            <hr />
+            <span class="well well-white">
+                {{note.text}}
+            </span>
+        </div>
+    </div>
+</div>
