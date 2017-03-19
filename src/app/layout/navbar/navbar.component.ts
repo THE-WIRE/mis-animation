@@ -48,9 +48,11 @@ export class Navbar {
 
   ngOnInit(){
     this.af.auth.subscribe(user => {
-      this.af.database.object('Users/'+user.uid+'/info').subscribe(data => {
-        this.userDisplayName = data.lname + ' ' + data.fname;
-      })
+      if(user) {
+        this.af.database.object('Users/'+user.uid+'/info').subscribe(data => {
+          this.userDisplayName = data.lname + ' ' + data.fname;
+        })
+      }
     })
   }
 

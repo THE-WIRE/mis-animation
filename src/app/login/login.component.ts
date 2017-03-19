@@ -14,34 +14,33 @@ import { Router } from '@angular/router'
 export class Login {
   private email: string = "";
   private password: string = "";
-  data : any = {
-    pid : 2,
-    pname : 'Doreamon',
-    ptype : 'Movie',
-    pDesc: 'This is a story of some robot living in the JAPAN',
-    crDate: Date.now(),
-    stDate: Date.now(),
-    endDate: null,
-    status: 'Awaiting Inventory',
-    short: {
-      id: '2',
-      type: 'Movie',
-      status: 'Awaiting Inventory'
-    },
-    long: {
-      name: 'Doreamon',
-      desc: 'This is a story of some robot living in the JAPAN'
-    },
-    date: {
-      crDate: Date.now(),
-      stDate: Date.now(),
-      endDate: Date.now()
-    }
-  };
+  // data : any = {
+  //   pid : 2,
+  //   pname : 'Doreamon',
+  //   ptype : 'Movie',
+  //   pDesc: 'This is a story of some robot living in the JAPAN',
+  //   crDate: Date.now(),
+  //   stDate: Date.now(),
+  //   endDate: null,
+  //   status: 'Awaiting Inventory',
+  //   short: {
+  //     id: '2',
+  //     type: 'Movie',
+  //     status: 'Awaiting Inventory'
+  //   },
+  //   long: {
+  //     name: 'Doreamon',
+  //     desc: 'This is a story of some robot living in the JAPAN'
+  //   },
+  //   date: {
+  //     crDate: Date.now(),
+  //     stDate: Date.now(),
+  //     endDate: Date.now()
+  //   }
+  // };
   constructor(public af: AngularFire, private router:Router) {
 
     this.af.auth.subscribe(user => {
-      console.log(user);
       if(user){
         this.router.navigate(['app'])
       }
@@ -55,18 +54,11 @@ export class Login {
         password: formValues.password
       });
 
-  }
-
-  logout() {
-    this.af.auth.logout();
-  }
-
-  ngOnInit(){
-    const items = this.af.database.list('/products');
-    items.push(this.data)
-        .then(_ => console.log('success'))
-        .catch(err => console.log(err, 'You do not have access!'));
+      this.af.auth.subscribe(user => {
+        if(user){
+          this.router.navigate(['app'])
+        }
+      })
 
   }
-
 }

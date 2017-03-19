@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from "angularfire2";
+import {AngularFire, FirebaseObjectObservable} from "angularfire2";
 //import {of} from "../../Observable";
 
 @Component({
@@ -69,7 +69,6 @@ export class AllAssets{
 
 
     initiate(projectkey : string,assetkey: number){
-      console.log('INSIDE INITIATE');
       this.af.auth.subscribe(user=>{
         if(user){
           this.af.database.object('Users/'+user.uid+'/projects/'+projectkey+'/Assets/'+assetkey).update({status : 1,initialTime: Date.now(), startTime: Date.now()});
@@ -86,12 +85,19 @@ export class AllAssets{
   }
 
   pause(projectkey : string,assetkey: number){
-    let startDate : any;
-    this.af.auth.subscribe(user=>{
+    let startTime : any;
+    let overallTime: any;
+    this.af.auth.subscribe(user => {
       if(user){
-        startDate = this.af.database.object('Users/'+user.uid+'/projects/'+projectkey+'/Assets/'+assetkey).map(data=>{return data.startTime})
+        this.af.database.object('Users/'+user.uid+'/projects/'+projectkey+'/Assets/'+assetkey).subscribe(data => {
+          startTime = data.startTime;
+          overallTime = data.overallTime ? data.overallTime : 0;
+        });
 
-        this.af.database.object('Users/'+user.uid+'/projects/'+projectkey+'/Assets/'+assetkey).update({status : 2});
+        overallTime += Date.now() - startTime;
+        this.af.database.object('Users/'+user.uid+'/projects/'+projectkey+'/Assets/'+assetkey).update({status : 2, overallTime: overallTime});
+
+
       }
     })
   }
